@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jawad | Web Developer Portfolio</title>
+  <style>
+    /* ===== Global Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #020617;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+   
+
+    /* ===== Navbar ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0%;
+      height: 2px;
+      background: #38bdf8;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #e5e7eb;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* ===== Sections ===== */
+    main {
+      padding-top: 4.5rem; /* space for fixed header */
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-top: 1px solid #020617;
+    }
+
+    .section-heading {
+      font-size: 1.7rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subheading {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      margin-bottom: 1.8rem;
+    }
+
+    /* ===== Hero ===== */
+    #hero {
+      padding-top: 4.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title span {
+      color: #38bdf8;
+    }
+
+    .hero-typing-wrap {
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+      color: #9ca3af;
+      min-height: 1.4em;
+    }
+
+    .hero-typing-label {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-typing {
+      color: #38bdf8;
+      border-right: 2px solid #38bdf8;
+      padding-right: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #9ca3af;
+      margin-bottom: 1.7rem;
+      max-width: 36rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      padding: 0.65rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+        transform 0.12s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      border-color: #9ca3af;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 25px rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .hero-meta span {
+      display: block;
+      font-size: 1rem;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      border-radius: 1.6rem;
+      border: 1px solid #1f2937;
+      padding: 1.7rem;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 65%);
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 1);
+    }
+
+    .hero-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      border: 2px solid #38bdf8;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3rem;
+      font-weight: 700;
+      background: radial-gradient(circle at 30% 0, #1e293b 0, #020617 70%);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+    }
+
+    .hero-role {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+    }
+
+    .chip {
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #1f2937;
+      font-size: 0.8rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      border-color: #38bdf8;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+    }
+
+    /* ===== About ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1.3fr;
+      gap: 2.2rem;
+    }
+
+    .about-text p {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .about-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      padding: 1.3rem 1.4rem;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .about-list li {
+      margin-bottom: 0.55rem;
+    }
+
+    .about-list strong {
+      color: #e5e7eb;
+    }
+
+    /* ===== Services ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      background: linear-gradient(145deg, #020617, #020617, #020617);
+      padding: 1.4rem;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 70px rgba(15, 23, 42, 0.95);
+      border-color: #38bdf8;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: #9ca3af;
+      margin-bottom: 0.7rem;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .card ul li::before {
+      content: "• ";
+      color: #38bdf8;
+    }
+
+    /* ===== Portfolio ===== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .project {
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+      background: #020617;
+      position: relative;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.95);
+      transform: translateY(0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 1);
+    }
+
+    .project-body {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-tag {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: #9ca3af;
+      margin-bottom: 0.75rem;
+    }
+
+    .project a {
+      font-size: 0.86rem;
+      color: #38bdf8;
+      position: relative;
+      padding-bottom: 0.05rem;
+    }
+
+    .project a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 0%;
+      height: 1px;
+      background: #38bdf8;
+      transition: width 0.25s ease;
+    }
+
+    .project a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Contact ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1.6fr;
+      gap: 2.2rem;
+      align-items: start;
+    }
+
+    .contact-details {
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .contact-details p {
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.9rem;
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 1);
+    }
+
+    .field-group {
+      display: grid;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+    }
+
+    .field-group label {
+      color: #e5e7eb;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      background: #020617;
+      border-radius: 0.7rem;
+      border: 1px solid #1f2937;
+      padding: 0.65rem 0.8rem;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3), 0 16px 40px rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .field-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid #020617;
+      padding: 1.7rem 0 2.2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    /* ===== Scroll Reveal Animations ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .cards,
+      .portfolio-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
+        padding-top: 4.8rem;
+      }
+
+      .hero-card {
+        max-width: 320px;
+        margin-inline: auto;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .cards,
+      .portfolio-grid {
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; /* simple: hide menu on very small; can add burger later */
+      }
+
+      .hero-title {
+        font-size: 2.05rem;
+      }
+
+      .section-heading {
+        font-size: 1.45rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+    .section3{
+      text-align: center;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 2rem;
+
+
+    }
+      .simple-btn {
+  padding: 10px 25px;
+  background-color: #098be2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-style: bold;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-left: 650px;
+  margin-top: 100%;
+
+}
+
+.simple-btn:hover {
+  background-color: #01021f;
+
+}
+.contact-social ul{
+  color: #098be2;
+}
+.contact-social h3{
+  color: rgb(238, 238, 227);
+  font-size: 1.5rem;
+  font-style: bold;
+
+}
+.contact-social ul:hover {
+  color: #0e5779;
+}
+    
+  </style>
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <header>
+    <div class="container nav">
+      <div class="logo">M JAWAD<span>WEB</span></div>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="portfolio-work.html" class="portfolio ">portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section id="hero">
+      <div class="container hero-grid">
+        <div class="reveal-left">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Available for freelance projects
+          </div>
+          <h1 class="hero-title">
+            I Build <span>Modern Websites</span><br />Exactly The Way You Want
+          </h1>
+
+          <div class="hero-typing-wrap">
+            <span class="hero-typing-label">I’m a&nbsp;</span>
+            <span class="hero-typing"></span>
+          </div>
+
+          <p class="hero-subtitle">
+            I'm M Jawad, a Web Developer specializing in WordPress,Frontend Developer, Shopify and
+            business website/ecommerce Store,and also in Web Designing and portfolio websites. I focus on clean design, fast
+            performance and fully responsive layouts that match your vision and
+            help your business grow online.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Hire Me</a>
+            
+          </div>
+
+          <div class="hero-meta">
+            <div>
+              <span>2+ Years</span>
+              Experience
+            </div>
+            <div>
+              <span>20+ Projects</span>
+              Websites & Stores
+            </div>
+            <div>
+              <span>100%</span>
+              Client Focused
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal-right">
+          <div class="hero-avatar">J</div>
+          <p class="hero-role">Web Developer</p>
+          <p class="hero-name"> M Jawad</p>
+          <p class="hero-tagline">
+            “I create websites exactly as you want — business, ecommerce and portfolio.”
+          </p>
+          <div class="hero-stack">
+            <span class="chip">WordPress</span>
+            <span class="chip">Shopify</span>
+            <span class="chip">Ecommerce</span>
+            <span class="chip">Business Website</span>
+            <span class="chip">Portfolio</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-heading reveal">About Me</h2>
+        <p class="section-subheading reveal">
+          Professional, friendly and focused on delivering exactly what you need.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-text reveal-left">
+            <p>
+              My name is M Jawad and I build modern, responsive and user-friendly
+              websites for businesses, brands and individuals. From clean landing
+              pages to full ecommerce stores, I handle everything from structure
+              to design and basic on-page SEO.
+            </p>
+            <p>
+              I work closely with clients to understand their ideas and turn them
+              into a real website that looks professional and performs well on
+              desktop, tablet and mobile.
+            </p>
+            <p>
+              If you are looking for someone reliable, easy to communicate with
+              and focused on quality — I’m here to help.
+            </p>
+          </div>
+          <div class="reveal-right">
+            <ul class="about-list">
+              <li><strong>Location:</strong> Pakistan (PKT Time Zone)</li>
+              <li><strong>Expertise:</strong> WordPress, Shopify,Web Designer, Frontend</li>
+              <li><strong>Websites:</strong> Business, Ecommerce, Portfolio, Landing Pages</li>
+              <li><strong>Focus:</strong> Clean design, fast loading, mobile friendly</li>
+              <li><strong>Communication:</strong> Clear, fast and professional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-heading reveal">Services</h2>
+        <p class="section-subheading reveal">
+          Complete website solutions from idea to launch.
+        </p>
+
+        <div class="cards">
+          <div class="card reveal">
+            <h3>WordPress Websites</h3>
+            <p>
+              Business, portfolio and landing page websites using WordPress with
+              a clean and modern layout.
+            </p>
+            <ul>
+              <li>Fully responsive design</li>
+              <li>Fast and secure setup</li>
+              <li>Easy to edit and manage</li>
+            </ul>
+          </div>
+
+          <div class="card reveal">
+            <h3>Shopify Stores</h3>
+            <p>
+              Professional ecommerce store setup with products, collections and a
+              user-friendly shopping experience.
+            </p>
+            <ul>
+              <li>Store setup & customization</li>
+              <li>Product and collection pages</li>
+              <li>Payment & basic apps setup</li>
+            </ul>
+          </div>
+<div class="card reveal">
+            <h3>Portfolio Website</h3>
+            <p>
+              Professional ecommerce store setup with products, collections and a
+              user-friendly shopping experience.
+            </p>
+            <ul>
+              <li>Store setup & customization</li>
+              <li>Product and collection pages</li>
+              <li>Payment & basic apps setup</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Custom Web Solutions</h3>
+            <p>
+              Tailor-made pages and sections based on your brand, content and
+              specific requirements.
+            </p>
+            <ul>
+              <li>Custom sections & features</li>
+              <li>Redesign of old websites</li>
+              <li>Speed & UX improvements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ===== Portfolio ===== -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-heading reveal">Portfolio</h2>
+        <p class="section-subheading reveal">
+          A few example projects. You can replace links and details with your own work.
+        </p>
+
+        <div class="portfolio-grid">
+          <div class="project reveal">
+            <div class="project-body">
+              <h3 class="project-title">Business Website</h3>
+              <p class="project-tag">WordPress • Service Company</p>
+              <p class="project-desc">
+                A clean business website with services, about, contact form and
+                responsive layout for a local company.
+              </p>
+             <a href="portfolio-work.html" target="_blank"></a>
+            </div>
+          </div>
+
+          <div class="project reveal">
+            <div class="project-body">
+              <h3 class="project-title">Ecommerce Store</h3>
+              <p class="project-tag">Shopify • Online Shop</p>
+              <p class="project-desc">
+                Modern Shopify store with product pages, collections and an easy
+                checkout experience.
+              </p>
+              <a href="portfolio-work.html" target="_blank"></a>
+            </div>
+          </div>
+
+          <div class="project reveal">
+            <div class="project-body">
+              <h3 class="project-title">Personal Portfolio</h3>
+              <p class="project-tag">WordPress • Portfolio</p>
+              <p class="project-desc">
+                A personal portfolio website to showcase skills, services and
+                previous projects for a freelancer.
+              </p>
+             <a href="portfolio-work.html" target="_blank"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    
+    <!-- ===== Contact ===== -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-heading reveal">Contact</h2>
+    <p class="section-subheading reveal">
+      Ready to start your project? Send me a message with your idea. I will create your website as quickly as possible.
+    </p>
+
+    <div class="contact-grid">
+      <!-- Contact Details -->
+      <div class="contact-details reveal-left">
+        <p>
+          I reply quickly and keep communication simple. Share your idea, website type and any reference links if you have them. We’ll discuss the best way to bring your website to life.
+        </p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> jawadansari12786@gmail.com</li>
+          <li><strong>Time Zone:</strong> Pakistan Standard Time (PKT)</li>
+          <li><strong>Platforms:</strong> Guru, Fiverr, Upwork, etc.</li>
+        </ul>
+
+        <!-- Social Links -->
+        <div class="contact-social">
+          <h3> You Can Also Connect with Me on  My Social Media Platforms like </h3>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/muhammad-jawad-0aa55439b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form
+        class="contact-form reveal-right"
+        action="https://formsubmit.co/jawadansari12786@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Contact Form Message">
+
+        <div class="field-group">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Your email" required />
+        </div>
+
+        <div class="field-group">
+          <label for="message">Project Details</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Briefly describe your project..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    © <span id="year"></span> Jawad – Web Developer. All rights reserved.
+  </footer>
+
+  <script>
+    // ===== Footer Year =====
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ===== Typing Effect =====
+    const typingElement = document.querySelector(".hero-typing");
+    const typingWords = [
+      "Web Developer",
+      "Frontend Developer",
+      "WordPress Expert",
+      "Shopify Store Designer",
+      "Business & Ecommerce Specialist"
+    ];
+    let tIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const current = typingWords[tIndex];
+      if (!isDeleting) {
+        typingElement.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(typeLoop, 1500); // pause at end
+          return;
+        }
+      } else {
+        typingElement.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          tIndex = (tIndex + 1) % typingWords.length;
+        }
+      }
+      const speed = isDeleting ? 60 : 100;
+      setTimeout(typeLoop, speed);
+    }
+    typeLoop();
+
+    // ===== Active Navigation on Scroll =====
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let currentId = "";
+      const scrollPos = window.pageYOffset;
+
+      sections.forEach((section) => {
+        const offsetTop = section.offsetTop - 120; // adjust for header
+        if (scrollPos >= offsetTop) {
+          currentId = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (currentId && link.getAttribute("href").includes(currentId)) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // ===== Scroll Reveal Animations (IntersectionObserver) =====
+    const revealElements = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target); // animate only once
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Work | Jawad Portfolio</title>
+  <style>
+    /* ===== Global Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #020617;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== Navbar (same style feeling) ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0%;
+      height: 2px;
+      background: #38bdf8;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #e5e7eb;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ===== Page Layout ===== */
+    main {
+      padding-top: 4.5rem;
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-top: 1px solid #020617;
+    }
+
+    .section-heading {
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subheading {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      margin-bottom: 2.2rem;
+      max-width: 34rem;
+    }
+
+    /* ===== Hero / Intro ===== */
+    .work-hero {
+      text-align: left;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+        transform 0.12s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      border-color: #9ca3af;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 25px rgba(15, 23, 42, 0.7);
+    }
+
+    /* ===== Work Grid ===== */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .work-card {
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 65%);
+      position: relative;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease,
+        box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .work-card.reveal-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .work-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-image-wrap img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .work-tag-pill {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      padding: 0.26rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      font-size: 0.7rem;
+      color: #e5e7eb;
+    }
+
+    .work-card:hover .work-image-wrap img {
+      transform: scale(1.05);
+      filter: brightness(0.82);
+    }
+
+    .work-body {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .work-title {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .work-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.6rem;
+    }
+
+    .work-desc {
+      font-size: 0.86rem;
+      color: #9ca3af;
+      margin-bottom: 0.8rem;
+    }
+
+    .work-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    .work-links a {
+      color: #38bdf8;
+      position: relative;
+      padding-bottom: 0.05rem;
+    }
+
+    .work-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 0%;
+      height: 1px;
+      background: #38bdf8;
+      transition: width 0.25s ease;
+    }
+
+    .work-links a:hover::after {
+      width: 100%;
+    }
+
+    .live-label {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .work-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 26px 75px rgba(15, 23, 42, 1);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid #020617;
+      padding: 1.7rem 0 2.2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ===== Reveal base (for JS) ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <header>
+    <div class="container nav">
+      <div class="logo">JAWAD<span>DEV</span></div>
+      <nav class="nav-links">
+        <a href="index.html#hero">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio" class="active">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Intro Section ===== -->
+    <section>
+      <div class="container work-hero">
+        <div class="">
+          
+         
+        </div>
+        <h1 class="section-heading reveal">My Work & Projects</h1>
+        <p class="section-subheading reveal">
+         This portfolio showcases a selection of projects I have successfully completed for my clients. It reflects my dedication to quality and my ability to deliver outstanding results.
+
+I am excited and fully prepared to begin your project immediately."
+
+
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="index.html#contact" class="btn-primary">Start Your Project</a>
+          <a href="index.html#services" class="btn-outline">See What I Offer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Work Grid ===== -->
+    <section>
+      <div class="container">
+        <div class="work-grid">
+
+          <!-- Project 1 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+              <!-- apni real image ka path yahan lagana -->
+              <img src="bng8.png" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill">Ecommerce Store</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Modern Ecommerce Store</h2>
+              <p class="work-meta">Multi-page • Services • Contact Form</p>
+              <p class="work-desc">
+                Clean Ecommerce website with home, services, about and contact pages.
+                Fast loading, mobile friendly and focused on lead generation.
+              </p>
+              <div class="work-links">
+                <a href="#" target="_blank"></a>
+               
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+             <img src="bng9.png" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill">Shopify Ecommerce</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Modern Ecommerce Store</h2>
+              <p class="work-meta">Products • Collections • Cart</p>
+              <p class="work-desc">
+                Shopify store designed for easy shopping experience with
+                product filters, collections and clean checkout flow.
+              </p>
+              <div class="work-links">
+                <a href="#" target="_blank"></a>
+                
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+              <img src="bng5.png" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill">WordPress</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Personal Fashion Designing Website</h2>
+              <p class="work-meta">Services • Work • Contact</p>
+              <p class="work-desc">
+                Fashion Designer Website, services and work
+                showcase sections, focused on personal branding.
+              </p>
+              <div class="work-links">
+                <a href="#" target="_blank"></a>
+               
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+              <img src="bng6.png" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill"> Landing Page</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Personal Fashion Designing Website</h2>
+              
+              <p class="work-desc">
+                Simple but powerful landing page designed for a marketing
+                campaign with strong call-to-action blocks.
+              </p>
+              <div class="work-links">
+                
+                
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+              <img src="bng7.png" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill">contact-form</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Content </h2>
+           
+              <p class="work-desc">
+                Content-focused blog with category listing, single post layout
+                and easy reading experience on all devices.
+              </p>
+              <div class="work-links">
+               
+               
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="work-card reveal">
+            <div class="work-image-wrap">
+             <img src="images/project1.jpg" class="popup-img" alt="Project 1">
+              <span class="work-tag-pill">Business • Multi-page</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">Brand & Services Website</h2>
+              <p class="work-meta">Brand story • Services • Contact</p>
+              <p class="work-desc">
+                Multi-page brand website with clear structure, service detail
+                pages and contact options for new clients.
+              </p>
+              <div class="work-links">
+               
+              
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Jawad – Web Developer. All rights reserved.
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll Reveal (same smooth feel)
+    const revealElements = document.querySelectorAll(".reveal, .work-card");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+  </script>
+  <!-- ===== Full Screen Image Popup ===== -->
+<div id="img-popup" class="popup">
+  <span class="popup-close">&times;</span>
+  <img class="popup-content" id="popup-img-box">
+</div>
+
+<style>
+/* Background overlay */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+/* Close Button */
+.popup-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #38bdf8;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.popup-close:hover {
+  color: #fff;
+}
+
+/* Popup image */
+.popup-content {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 15px 60px rgba(15, 23, 42, 1);
+  animation: zoomFade 0.4s ease;
+}
+
+@keyframes zoomFade {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+<script>
+// Full screen popup code
+const popup = document.getElementById("img-popup");
+const popupImg = document.getElementById("popup-img-box");
+const closeBtn = document.querySelector(".popup-close");
+
+// All clickable images
+document.querySelectorAll(".popup-img").forEach(img => {
+  img.addEventListener("click", () => {
+    popup.style.display = "block";
+    popupImg.src = img.src;
+  });
+});
+
+// Close popup
+closeBtn.addEventListener("click", () => popup.style.display = "none");
+
+// Close by clicking outside
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) popup.style.display = "none";
+});
+</script>
+
+</body>
+</html>

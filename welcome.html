@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome - M.JAWAD WEB</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  background-color: #020617;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Container Flex */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 50px;
+}
+
+/* Left Section Centered Horizontally & Vertically */
+.left-section {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Horizontal center */
+  text-align: center;  /* Text center */
+  margin-left: 200px;
+}
+
+/* Heading */
+.left-section h1 {
+  font-size: 60px;
+  color: rgb(8, 156, 255);
+  animation: slideUp 2s forwards;
+  margin-bottom: 20px;
+
+}
+.left-section p{
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Arial Narrow Bold';
+  margin-top: 60px;
+}
+/* Typing Effect */
+.left-section p.typing-text {
+  display: inline-block;
+  border-right: 3px solid #0473b8;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40) 1 forwards, blink 0.7s step-end infinite alternate;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+/* Button */
+.magic-btn {
+  position: relative;
+  display: inline-block;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #0998eb, #0ea5e0);
+  box-shadow: 0 8px 25px rgba(10, 143, 219, 0.5);
+  transition: 0.3s ease-in-out;
+  margin-top: 40px;
+}
+
+.magic-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(3, 1, 34, 0.7);
+}
+
+.magic-btn::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background: rgba(5, 3, 32, 0.3);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: 0.5s ease-out;
+}
+
+.magic-btn:hover::before {
+  width: 250%;
+  height: 250%;
+}
+
+/* Right Section - Circular Image with Shadow */
+.right-section {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-circle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6); /* stronger shadow */
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.right-circle img {
+  width:100%;
+  height: 120%;
+  object-fit: cover;
+  display: block;
+}
+
+.right-circle:hover {
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* hover shadow bigger */
+}
+
+/* Flower animation */
+.flower {
+  position: absolute;
+  top: -50px;
+  font-size: 25px;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0.5; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .left-section, .right-section {
+    max-width: 100%;
+  }
+  .right-circle {
+    margin-top: 30px;
+  }
+  .left-section h1 { font-size: 36px; }
+  .left-section p.typing-text { font-size: 18px; }
+  .magic-btn { padding: 12px 30px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- Left Text Section -->
+  <div class="left-section">
+    <h1>Welcome To M.JAWAD WEB, Portfolio Website</h1>
+    <p class="typing-text">Let's Get Started To See, The Work Experience OF M JAWAD</p>
+    <a href="index.html" class="magic-btn">Get Started</a>
+  </div>
+
+  <!-- Right Image Section -->
+  <div class="right-section">
+    <div class="right-circle">
+      <img src="bng11.jpg" alt="Jawad Ansari">
+    </div>
+  </div>
+</div>
+
+<!-- Flowers -->
+<div id="flowers"></div>
+
+<script>
+// Flower animation
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  const flowers = ["🌸", "🌺", "💮", "🌼"];
+  flower.innerText = flowers[Math.floor(Math.random()*flowers.length)];
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = (Math.random()*3 + 3) + "s";
+  flower.style.fontSize = (Math.random()*15 + 20) + "px";
+  document.getElementById("flowers").appendChild(flower);
+  setTimeout(() => { flower.remove(); }, 6000);
+}
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
