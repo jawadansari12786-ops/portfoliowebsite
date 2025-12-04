@@ -944,38 +944,38 @@
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <form
-        class="contact-form reveal-right"
-        action="https://formsubmit.co/jawadansari12786@gmail.com"
-        method="POST"
-      >
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="New Contact Form Message">
+      
+     <!-- ===== Contact Form (EmailJS version) ===== -->
+<form
+  class="contact-form reveal-right"
+  id="contact-form"
+>
+  <div class="field-group">
+    <label for="name">Name</label>
+    <input id="name" name="from_name" type="text" placeholder="Your name" required />
+  </div>
 
-        <div class="field-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required />
-        </div>
+  <div class="field-group">
+    <label for="email">Email</label>
+    <input id="email" name="from_email" type="email" placeholder="Your email" required />
+  </div>
 
-        <div class="field-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Your email" required />
-        </div>
+  <div class="field-group">
+    <label for="message">Project Details</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Briefly describe your project..."
+      required
+    ></textarea>
+  </div>
 
-        <div class="field-group">
-          <label for="message">Project Details</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Briefly describe your project..."
-            required
-          ></textarea>
-        </div>
+  <button type="submit" class="btn-primary">Send Message</button>
+  <p id="success-message" style="display:none; color:#38bdf8; font-weight:bold; margin-top:10px;">
+    Your message has been sent successfully!
+  </p>
+</form>
 
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
     </div>
   </div>
 </section>
@@ -1070,7 +1070,28 @@
     revealElements.forEach((el) => observer.observe(el));
   </script>
 </body>
+  <!-- ===== Add EmailJS SDK and JS ===== -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("03CYnb35vEpFING69"); // ← Replace with your EmailJS Public Key
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent default form submission
+
+    emailjs.sendForm('163pntw', 'od7496o', this)
+      .then(function() {
+        document.getElementById("success-message").style.display = "block";
+        document.getElementById("contact-form").reset();
+      }, function(error) {
+        alert("Oops! Something went wrong. " + JSON.stringify(error));
+      });
+  });
+</script>
+
 </html>
+
 
 
 
