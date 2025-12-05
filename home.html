@@ -679,71 +679,7 @@
 .contact-social ul:hover {
   color: #0e5779;
 }
-
-    /* Body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Contact form container */
-.contact-form {
-    background-color: #fff;
-    padding: 25px 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-/* Form title */
-.contact-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Form elements */
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Textarea styling */
-.contact-form textarea {
-    resize: none;
-    height: 100px;
-}
-
-/* Button styling */
-.contact-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background-color: #5750d3;
-}
-
+    
   </style>
 </head>
 <body>
@@ -927,9 +863,9 @@ body {
     </section>
 
 
-  <!-- ===== Portfolio ===== -->
-    
-    
+
+    <!-- ===== Portfolio ===== -->
+    <section id="portfolio">
       <div class="container">
         <h2 class="section-heading reveal">Portfolio</h2>
         <p class="section-subheading reveal">
@@ -978,8 +914,7 @@ body {
    
     
     <!-- ===== Contact ===== -->
-<section id="contact
-  
+<section id="contact">
   <div class="container">
     <h2 class="section-heading reveal">Contact</h2>
     <p class="section-subheading reveal">
@@ -1003,30 +938,46 @@ body {
           <h3> You Can Also Connect with Me on  My Social Media Platforms like </h3>
           <ul>
             <li><a href="https://www.linkedin.com/in/muhammad-jawad-0aa55439b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium" target="_blank">LinkedIn</a></li>
-            <li><a href="https://www.facebook.com/share/1DKDGqTsKv/_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com/jawad.ansari786?igsh=MWczOXVmNXRwZnRnMQ==" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- Contact Form -->
+      <form
+        class="contact-form reveal-right"
+        action="https://formsubmit.co/jawadansari12786@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Contact Form Message">
 
-  <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <label for="name">Name</label>
-            <input type="hidden" name="access_key" value="5e9073f2-2cc6-44aa-ba29-83c60fea9b55">
-            <input type="text" id="name" name="from_name" placeholder="Your Name" required>
+        <div class="field-group">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="from_email" placeholder="Your Email" required>
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Your email" required />
+        </div>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <div class="field-group">
+          <label for="message">Project Details</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Briefly describe your project..."
+            required
+          ></textarea>
+        </div>
 
-            <button type="submit">Send</button>
-        </form>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
     </div>
+  </div>
 </section>
 
   </main>
@@ -1118,39 +1069,5 @@ body {
 
     revealElements.forEach((el) => observer.observe(el));
   </script>
-    <!-- ===== Add EmailJS SDK and JS ===== -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("03CYnb35vEpFING69"); // ← Replace with your EmailJS Public Key
-  })();
-
-  document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // prevent default form submission
-
-    emailjs.sendForm("service_163pntw","template_a0a7igh"); this)
-      .then(function() {
-        document.getElementById("success-message").style.display = "block";
-        document.getElementById("contact-form").reset();
-      }, function(error) {
-        alert("Oops! Something went wrong. " + JSON.stringify(error));
-      });
-  });
-</script>
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
