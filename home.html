@@ -947,46 +947,6 @@
       
      <!-- ===================== CONTACT FORM ===================== -->
 
-<!-- EmailJS Library -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<style>
-  .contact-form{
-    width: 100%;
-    max-width: 450px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f8f8f8;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-
-  .contact-form button {
-    width: 100%;
-    padding: 12px;
-    background: #007bff;
-    border: none;
-    color: white;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .contact-form button:hover {
-    background: #0056b3;
-  }
-</style>
 
 <div class="contact-form">
   <form id="contactForm">
@@ -1001,26 +961,7 @@
   </form>
 </div>
 
-<!-- ===================== JAVASCRIPT ===================== -->
-<script>
-  emailjs.init("03CYnb35vEpFING69"); // <-- apni public key lagao
 
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    emailjs.sendForm("service_163pntw", "template_a0a7igh", this)
-      .then(() => {
-        alert("Message sent successfully!");
-        document.getElementById("contactForm").reset();
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        alert("Message failed to send!");
-      });
-  });
-</script>
-
-<!-- =================== END CONTACT FORM =================== -->
 
     </div>
   </div>
@@ -1138,6 +1079,7 @@
 </body>
 
 </html>
+
 
 
 
