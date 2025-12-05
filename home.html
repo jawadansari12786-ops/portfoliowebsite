@@ -945,36 +945,82 @@
       </div>
 
       
-     <!-- ===== Contact Form (EmailJS version) ===== -->
-<form
-  class="contact-form reveal-right"
-  id="contact-form"
->
-  <div class="field-group">
-    <label for="name">Name</label>
-    <input id="name" name="from_name" type="text" placeholder="Your name" required />
-  </div>
+     <!-- ===================== CONTACT FORM ===================== -->
 
-  <div class="field-group">
-    <label for="email">Email</label>
-    <input id="email" name="from_email" type="email" placeholder="Your email" required />
-  </div>
+<!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-  <div class="field-group">
-    <label for="message">Project Details</label>
-    <textarea
-      id="message"
-      name="message"
-      placeholder="Briefly describe your project..."
-      required
-    ></textarea>
-  </div>
+<style>
+  .contact-form{
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
 
-  <button type="submit" class="btn-primary">Send Message</button>
-  <p id="success-message" style="display:none; color:#38bdf8; font-weight:bold; margin-top:10px;">
-    Your message has been sent successfully!
-  </p>
-</form>
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .contact-form button:hover {
+    background: #0056b3;
+  }
+</style>
+
+<div class="contact-form">
+  <form id="contactForm">
+
+    <input type="text" name="from_name" placeholder="Your Name" required>
+
+    <input type="email" name="from_email" placeholder="Your Email" required>
+
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+  emailjs.init("03CYnb35vEpFING69"); // <-- apni public key lagao
+
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_163pntw", "template_a0a7igh", this)
+      .then(() => {
+        alert("Message sent successfully!");
+        document.getElementById("contactForm").reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        alert("Message failed to send!");
+      });
+  });
+</script>
+
+<!-- =================== END CONTACT FORM =================== -->
 
     </div>
   </div>
@@ -1092,6 +1138,7 @@
 </body>
 
 </html>
+
 
 
 
